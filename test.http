@@ -1,0 +1,65 @@
+### Create Person
+POST http://localhost:4004/catalog/createPersonOk HTTP/1.1
+Content-Type:  application/json
+
+{
+    "person":{
+        "name":"sam"
+    }
+}
+
+### Crash Person because of entity already exists, crash CAP
+POST http://localhost:4004/catalog/createPersonCrash HTTP/1.1
+Content-Type:  application/json
+
+{
+    "person":{
+        "name":"sam"
+    }
+}
+
+### Many transactions
+POST http://localhost:4004/catalog/createPersonsManyTransactions HTTP/1.1
+Content-Type:  application/json
+
+{
+    "persons": [
+        {
+            "name": "sam1"
+        },
+        {
+            "name": "sam2"
+        },
+        {
+            "name": "sam1"
+        },
+        {
+            "name": "sam3"
+        }
+    ]
+}
+
+
+### Many cstom transactions
+POST http://localhost:4004/catalog/createPersonsCustomTransactions HTTP/1.1
+Content-Type:  application/json
+
+{
+    "persons": [
+        {
+            "name": "sam1"
+        },
+        {
+            "name": "sam2"
+        },
+        {
+            "name": "sam1"
+        },
+        {
+            "name": "sam3"
+        }
+    ]
+}
+
+### 
+GET http://localhost:4004/catalog/Persons HTTP/1.1

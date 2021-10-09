@@ -83,30 +83,28 @@ class CatalogService extends cds.ApplicationService {
     }
 
     async createPerson(person) {
-        return new Promise(async (resolve) => {
-            logPerson("Create: ", person);
-            const customTx = cds.tx({ user: "me" });
-            try {
-                logPerson("before insert: ", person);
-                await customTx.run(INSERT.into(cds.entities.Persons).entries(person));
-                logPerson("after insert: ", person);
-                logPerson("before commit: ", person);
-                await customTx.commit();
-                logPerson("after commit: ", person);
-                resolve({
-                    person: person,
-                    status: "done",
-                });
-            } catch (error) {
-                logPerson("before rollback: ", person);
-                await customTx.rollback();
-                logPerson("after rollback: ", person);
-                resolve({
-                    person: person,
-                    status: "error: " + error.message,
-                });
-            }
-        });
+        logPerson("Create: ", person);
+        const customTx = cds.tx({ user: "me" });
+        try {
+            logPerson("before insert: ", person);
+            await customTx.run(INSERT.into(cds.entities.Persons).entries(person));
+            logPerson("after insert: ", person);
+            logPerson("before commit: ", person);
+            await customTx.commit();
+            logPerson("after commit: ", person);
+            return {
+                person: person,
+                status: "done",
+            };
+        } catch (error) {
+            logPerson("before rollback: ", person);
+            await customTx.rollback();
+            logPerson("after rollback: ", person);
+            return {
+                person: person,
+                status: "error: " + error.message,
+            };
+        }
     }
 }
 

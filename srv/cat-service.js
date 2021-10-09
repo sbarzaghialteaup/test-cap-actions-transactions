@@ -6,12 +6,18 @@ function logPerson(label, person) {
 
 class CatalogService extends cds.ApplicationService {
     async init() {
+        this.on("createPersonOk", this.createPersonDefaultTx);
         this.on("createPersonOk", this.createPersonOk);
         this.on("createPersonCrash", this.createPersonCrash);
         this.on("createPersonsManyTransactions", this.createPersonsManyTransactions);
         this.on("createPersonsCustomTransactions", this.createPersonsCustomTransactions);
 
         await super.init();
+    }
+
+    async createPersonDefaultTx(req) {
+        await INSERT.into(cds.entities.Persons).entries(req.data.person);
+        req.reply(req.data);
     }
 
     async createPersonOk(req) {

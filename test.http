@@ -1,6 +1,7 @@
 ### Create Person
 POST http://localhost:4004/catalog/createPersonOk HTTP/1.1
 Content-Type:  application/json
+Authorization: Basic sam:sam
 
 {
     "person":{
@@ -11,6 +12,7 @@ Content-Type:  application/json
 ### Crash Person because of entity already exists, crash CAP
 POST http://localhost:4004/catalog/createPersonCrash HTTP/1.1
 Content-Type:  application/json
+Authorization: Basic sam:sam
 
 {
     "person":{
@@ -21,6 +23,7 @@ Content-Type:  application/json
 ### Many transactions
 POST http://localhost:4004/catalog/createPersonsManyTransactions HTTP/1.1
 Content-Type:  application/json
+Authorization: Basic sam:sam
 
 {
     "persons": [
@@ -43,6 +46,7 @@ Content-Type:  application/json
 ### Many cstom transactions
 POST http://localhost:4004/catalog/createPersonsCustomTransactions HTTP/1.1
 Content-Type:  application/json
+Authorization: Basic sam:sam
 
 {
     "persons": [

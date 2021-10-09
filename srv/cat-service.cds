@@ -4,6 +4,7 @@ type Person : {
     name : String
 };
 
+@requires : 'authenticated-user'
 service CatalogService {
     entity Persons as projection on my.Persons;
     action createPersonOk(person : Person) returns String;

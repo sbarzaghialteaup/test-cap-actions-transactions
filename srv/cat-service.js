@@ -84,13 +84,13 @@ class CatalogService extends cds.ApplicationService {
 
     async createPerson(person) {
         logPerson("Create: ", person);
-        const customTx = cds.tx({ user: "me" });
+        const customTx = cds.tx({ user: "customtx" });
         try {
             logPerson("before insert: ", person);
             await customTx.run(INSERT.into(cds.entities.Persons).entries(person));
             logPerson("after insert: ", person);
             logPerson("before commit: ", person);
-            await customTx.commit();
+            await customTx.commit(person);
             logPerson("after commit: ", person);
             return {
                 person: person,

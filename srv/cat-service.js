@@ -29,7 +29,7 @@ class CatalogService extends cds.ApplicationService {
 
     async createPersonsManyTransactions(req) {
         const interval = setInterval(() => {
-            console.log("...faccio altro");
+            console.log("...doing something else");
         }, 1);
 
         const tx = cds.tx(req);
@@ -67,7 +67,7 @@ class CatalogService extends cds.ApplicationService {
 
     async createPersonsCustomTransactions(req) {
         const interval = setInterval(() => {
-            console.log("...faccio altro");
+            console.log("...doing something else");
         }, 1);
 
         console.log("Start custom transaction");

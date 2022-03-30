@@ -1,11 +1,11 @@
 ### Create Person default transaction
-POST http://localhost:4004/catalog/createPersonOk HTTP/1.1
+POST http://localhost:4004/catalog/createPersonDefaultTx HTTP/1.1
 Content-Type:  application/json
 Authorization: Basic sam:sam
 
 {
     "person":{
-        "name":"sam"
+        "name":"sam_createPersonDefaultTx"
     }
 }
 
@@ -16,7 +16,7 @@ Authorization: Basic sam:sam
 
 {
     "person":{
-        "name":"sam"
+        "name":"sam_createPersonOk"
     }
 }
 
@@ -62,16 +62,16 @@ Authorization: Basic sam:sam
 {
     "persons": [
         {
-            "name": "sam1"
+            "name": "sam1_createPersonsCustomTransactions"
         },
         {
-            "name": "sam2"
+            "name": "sam2_createPersonsCustomTransactions"
         },
         {
-            "name": "sam1"
+            "name": "sam1_createPersonsCustomTransactions"
         },
         {
-            "name": "sam3"
+            "name": "sam3_createPersonsCustomTransactions"
         }
     ]
 }

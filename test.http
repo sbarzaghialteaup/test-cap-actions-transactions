@@ -78,3 +78,4 @@ Authorization: Basic sam:sam
 
 ### 
 GET http://localhost:4004/catalog/Persons HTTP/1.1
+Authorization: Basic sam:sam

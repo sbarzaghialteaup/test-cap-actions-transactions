@@ -6,7 +6,7 @@ function logPerson(label, person) {
 
 class CatalogService extends cds.ApplicationService {
     async init() {
-        this.on("createPersonOk", this.createPersonDefaultTx);
+        this.on("createPersonDefaultTx", this.createPersonDefaultTx);
         this.on("createPersonOk", this.createPersonOk);
         this.on("createPersonCrash", this.createPersonCrash);
         this.on("createPersonsManyTransactions", this.createPersonsManyTransactions);
@@ -40,7 +40,7 @@ class CatalogService extends cds.ApplicationService {
 
         const tx = cds.tx(req);
         const results = [];
-        req.data.persons.forEach(async (person) => {
+        req.data.persons.forEach(async(person) => {
             console.log(person);
             const result = {
                 person: person,

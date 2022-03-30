@@ -7,6 +7,7 @@ type Person : {
 @requires : 'authenticated-user'
 service CatalogService {
     entity Persons as projection on my.Persons;
+    action createPersonDefaultTx(person : Person) returns String;
     action createPersonOk(person : Person) returns String;
     action createPersonCrash(person : Person) returns String;
     action createPersonsManyTransactions(persons : many Person) returns many String;
